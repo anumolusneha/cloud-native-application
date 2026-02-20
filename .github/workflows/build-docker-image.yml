@@ -3,10 +3,10 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main   # Trigger workflow on push to main branch
+      - main
   pull_request:
     branches:
-      - main   # Trigger workflow on PR to main branch
+      - main
 
 jobs:
   build:
@@ -31,10 +31,10 @@ jobs:
       # Step 4: Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t YOUR_DOCKER_USERNAME/myapp:${{ github.sha }} .
+          docker build -t sneha32254/myapp:${{ github.sha }} .
 
       # Step 5: Push Docker image (only on main branch)
       - name: Push Docker image
         if: github.ref == 'refs/heads/main'
         run: |
-          docker push YOUR_DOCKER_USERNAME/myapp:${{ github.sha }}
+          docker push sneha32254/myapp:${{ github.sha }}
